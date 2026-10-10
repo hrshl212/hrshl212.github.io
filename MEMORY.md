@@ -22,7 +22,7 @@ Last updated: 2026-10-10
 - `index.html` contains the complete site and inline CSS.
 - `Photo.png` is an available profile portrait asset.
 - `assets/Harshal_Raut_CV.pdf` is the downloadable academic CV.
-- `assets/Harshal_Raut_GPU_Computational_Industry_Resume.pdf` is the résumé linked from the hero with the button label **Resume**.
+- `assets/Harshal_Raut_GPU_Computational_Industry_Resume_Final.pdf` is the current résumé linked from the hero with the button label **Resume**.
 - Flagship project images are loaded from Harshal's public GitHub repositories through `raw.githubusercontent.com`.
 - Main sections: hero, statistics, projects, GPU/HPC engineering, experience, publications, and contact.
 
@@ -45,6 +45,7 @@ Last updated: 2026-10-10
 - 2026-10-10: Reordered the GPU/HPC project cards.
 - 2026-10-10: Removed “Mechanical Engineer” from the homepage identity and metadata again, establishing **Computational scientist · GPU/HPC** as the current label.
 - 2026-10-10: Shortened the hero button label from “Industry Resume” to “Resume.”
+- 2026-10-10: Updated the hero's Resume link to `Harshal_Raut_GPU_Computational_Industry_Resume_Final.pdf` after validating its two-page rendering.
 
 ## Maintenance guidance
 
