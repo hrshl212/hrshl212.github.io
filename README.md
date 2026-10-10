@@ -8,7 +8,7 @@ A lightweight static portfolio built from the public repositories at <https://gi
 - `MEMORY.md` — project decisions, design guidance, and deployment context for future updates.
 - `Photo.png` — profile portrait retained as an available site asset.
 - `assets/Harshal_Raut_CV.pdf` — academic CV linked from the homepage.
-- `assets/Harshal_Raut_GPU_Computational_Industry_Resume.pdf` — industry résumé linked from the homepage.
+- `assets/Harshal_Raut_GPU_Computational_Industry_Resume.pdf` — résumé linked from the homepage.
 - `.nojekyll` — tells GitHub Pages to serve the site as plain static files.
 
 ## Recommended deployment: `hrshl212.github.io`

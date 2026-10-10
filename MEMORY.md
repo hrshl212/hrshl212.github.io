@@ -5,8 +5,8 @@ Last updated: 2026-10-10
 ## Purpose and positioning
 
 - This is Harshal S. Raut's technical portfolio for computational science, CFD, multiphysics, numerical methods, and GPU/HPC scientific software.
-- The primary professional label is **Computational scientist · Mechanical engineer · GPU/HPC**.
-- Include “mechanical engineer” in the homepage identity and metadata unless explicitly requested otherwise.
+- The primary professional label is **Computational scientist · GPU/HPC**.
+- Do not use “Mechanical Engineer” in the homepage identity or metadata unless explicitly requested otherwise.
 - Keep **Ph.D., Mechanical Engineering** in the experience timeline because it is an academic credential.
 
 ## Design decisions
@@ -22,7 +22,7 @@ Last updated: 2026-10-10
 - `index.html` contains the complete site and inline CSS.
 - `Photo.png` is an available profile portrait asset.
 - `assets/Harshal_Raut_CV.pdf` is the downloadable academic CV.
-- `assets/Harshal_Raut_GPU_Computational_Industry_Resume.pdf` is the industry résumé linked from the hero.
+- `assets/Harshal_Raut_GPU_Computational_Industry_Resume.pdf` is the résumé linked from the hero with the button label **Resume**.
 - Flagship project images are loaded from Harshal's public GitHub repositories through `raw.githubusercontent.com`.
 - Main sections: hero, statistics, projects, GPU/HPC engineering, experience, publications, and contact.
 
@@ -43,6 +43,8 @@ Last updated: 2026-10-10
 - 2026-10-10: Replaced the hero's Academic CV button with an Industry Resume button.
 - 2026-10-10: Removed the portrait from the visible Experience section while retaining `Photo.png` as an asset.
 - 2026-10-10: Reordered the GPU/HPC project cards.
+- 2026-10-10: Removed “Mechanical Engineer” from the homepage identity and metadata again, establishing **Computational scientist · GPU/HPC** as the current label.
+- 2026-10-10: Shortened the hero button label from “Industry Resume” to “Resume.”
 
 ## Maintenance guidance
 
