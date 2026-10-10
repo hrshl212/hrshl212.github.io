@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Harshal S. Raut, Ph.D. — computational scientist and mechanical engineer working in CFD, multiphysics, GPU/HPC scientific computing, numerical methods, and scientific machine learning.">
+<meta name="theme-color" content="#07131d">
+<title>Harshal S. Raut, Ph.D. | CFD · Multiphysics · GPU/HPC</title>
+<style>
+:root{
+  --bg:#06111a; --bg2:#0b1823; --card:#0d1d29; --card2:#102432;
+  --ink:#eef5f7; --muted:#9fb1bc; --line:#203744; --accent:#61d6c4; --accent2:#7eb7ff;
+  --max:1180px; --radius:22px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 15% -5%,#123548 0,transparent 34%),linear-gradient(180deg,var(--bg),#07151f 42%,#08121a);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none} img{max-width:100%;display:block}.shell{width:min(var(--max),calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(6,17,26,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+nav{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:10px;align-items:center;font-weight:800}.mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:10px;background:#0c1d29;color:var(--accent);font-size:13px}.links{display:flex;gap:24px;font-size:14px;color:var(--muted)}.links a:hover{color:#fff}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:74px 0 68px}.eyebrow{font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}.hero h1{font-size:clamp(44px,6.8vw,83px);line-height:.99;letter-spacing:-.055em;margin:0 0 22px;max-width:850px}.hero h1 span{color:var(--accent)}.lede{font-size:19px;color:#b9c9d1;max-width:720px;margin:0 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border:1px solid var(--line);border-radius:12px;background:#0c1c28;font-weight:700;font-size:14px}.btn.primary{background:var(--accent);color:#03201b;border-color:transparent}.btn:hover{transform:translateY(-1px)}
+.hero-media{position:relative;border:1px solid var(--line);background:#08151f;border-radius:26px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.28)}.hero-media img{width:100%;border-radius:18px;aspect-ratio:16/10;object-fit:cover;background:#10202b}.hero-badge{position:absolute;left:24px;bottom:24px;background:rgba(5,16,24,.90);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:11px 13px;font-size:12px;color:#b9c9d1}.hero-badge strong{display:block;color:#fff;font-size:13px;margin-bottom:2px}
+.stats{border-block:1px solid var(--line);background:rgba(12,28,40,.52)}.stats .shell{display:grid;grid-template-columns:repeat(4,1fr);padding:22px 0}.stat{padding:4px 24px;border-right:1px solid var(--line)}.stat:first-child{padding-left:0}.stat:last-child{border:0}.stat b{display:block;font-size:25px;letter-spacing:-.04em}.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+section{padding:84px 0}.section-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;align-items:end;margin-bottom:32px}.kicker{color:var(--accent);font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.12em}.section-head h2{font-size:clamp(31px,4vw,52px);line-height:1.05;letter-spacing:-.045em;margin:0}.section-head p{color:var(--muted);margin:10px 0 0;max-width:750px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.feature{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:linear-gradient(180deg,#102430,#0b1a25)}.feature-media{aspect-ratio:16/9;overflow:hidden;background:#10232e;border-bottom:1px solid var(--line)}.feature-media img{width:100%;height:100%;object-fit:cover}.feature-body{padding:25px}.project-meta{font:600 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2)}.feature h3,.card h3{font-size:25px;line-height:1.15;letter-spacing:-.025em;margin:9px 0 11px}.feature p,.card p{color:#aebec7;margin:0}.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}.metric{border:1px solid var(--line);border-radius:12px;padding:11px;background:#091721}.metric b{display:block;font-size:15px;color:#fff}.metric span{display:block;color:#8299a6;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0}.tags span{font-size:11px;color:#b9cbd3;border:1px solid #294250;background:#0a1923;padding:5px 8px;border-radius:999px}.linkline{display:flex;gap:18px;font-weight:700;font-size:13px;color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.card{border:1px solid var(--line);border-radius:18px;padding:21px;background:rgba(13,29,41,.75)}.card h3{font-size:20px}.card .metric-row{grid-template-columns:1fr 1fr}.card a{color:var(--accent);font-weight:700;font-size:13px}
+.band{background:#0b1923;border-block:1px solid var(--line)}.timeline{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}.role{display:grid;grid-template-columns:150px 1fr;gap:30px;padding:24px;background:#0a1721}.role time{font:600 12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent)}.role h3{margin:0 0 5px;font-size:20px}.role h3 span{font-weight:400;color:var(--muted)}.role p{margin:0;color:#aabac3}
+.pub-list{display:grid;gap:10px}.pub{display:grid;grid-template-columns:80px 1fr;gap:20px;border-bottom:1px solid var(--line);padding:17px 0}.pub-year{font:600 12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent)}.pub h3{margin:0 0 5px;font-size:17px;letter-spacing:-.015em}.pub p{margin:0;color:var(--muted);font-size:13px}.biglink{display:inline-block;margin-top:25px;color:var(--accent);font-weight:800}
+.contact{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#102b34,#0a1822);padding:34px}.contact h2{font-size:32px;line-height:1.1;letter-spacing:-.035em;margin:0 0 9px}.contact p{margin:0;color:#aebfc7;max-width:720px}.contact-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+footer{border-top:1px solid var(--line);padding:26px 0 38px;color:#8299a6;font-size:12px}.footer{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding-top:52px}.hero-media{max-width:700px}.stats .shell{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(n+3){margin-top:14px}.feature-grid,.cards{grid-template-columns:1fr}.section-head{grid-template-columns:1fr}.contact{grid-template-columns:1fr}.contact-actions{justify-content:flex-start}}
+@media(max-width:620px){.shell{width:min(var(--max),calc(100% - 24px))}.links{display:none}.hero{padding:44px 0}.hero h1{font-size:45px}.stats .shell{grid-template-columns:1fr}.stat{padding:9px 0;border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}.role{grid-template-columns:1fr;gap:7px}.metric-row{grid-template-columns:1fr}.pub{grid-template-columns:58px 1fr}.contact{padding:25px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<header><nav class="shell"><a class="brand" href="#top"><span class="mark">HR</span>Harshal Raut</a><div class="links"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#contact">Contact</a></div></nav></header>
+<main id="top">
+<section class="hero shell">
+  <div>
+    <div class="eyebrow">Computational scientist · Mechanical engineer · GPU/HPC</div>
+    <h1>Building <span>physics-based software</span> for difficult multiphysics problems.</h1>
+    <p class="lede">I develop CFD, fluid–structure interaction, multiphase and particle-laden flow models, GPU/HPC numerical solvers, and scientific machine-learning workflows.</p>
+    <div class="actions"><a class="btn primary" href="#projects">Explore projects</a><a class="btn" href="assets/Harshal_Raut_CV.pdf" target="_blank">Academic CV</a><a class="btn" href="https://github.com/hrshl212" target="_blank" rel="noopener">GitHub ↗</a></div>
+  </div>
+  <div class="hero-media">
+    <img src="https://raw.githubusercontent.com/hrshl212/multiphase-fsi-showcase/main/figures/surface_piercing.gif" alt="Heaving and pitching foil piercing and re-entering a free surface in a two-phase CFD simulation">
+    <div class="hero-badge"><strong>Free-surface multiphase CFD + moving immersed boundary</strong>JHU · VICAR3D extension · Re = 10⁴</div>
+  </div>
+</section>
+<div class="stats"><div class="shell">
+  <div class="stat"><b>11</b><span>peer-reviewed journal papers</span></div>
+  <div class="stat"><b>1.62×10⁻¹⁰</b><span>C90 quotient-operator action error</span></div>
+  <div class="stat"><b>5×10⁻⁸</b><span>max divergence in free-surface showcase</span></div>
+  <div class="stat"><b>A100</b><span>CUDA / OpenACC / GPU solver work</span></div>
+</div></div>
+
+<section class="shell" id="projects">
+  <div class="section-head"><div><div class="kicker">Flagship work</div></div><div><h2>Physics, numerical methods, and performance engineering.</h2><p>These projects combine algorithm development with validation and computational performance. The first three are public technical portfolios built from my research at Johns Hopkins and Purdue.</p></div></div>
+
+  <div class="feature-grid">
+    <article class="feature">
+      <div class="feature-media"><img src="https://raw.githubusercontent.com/hrshl212/multiphase-fsi-showcase/main/figures/surface_piercing_vorticity.png" alt="Vorticity snapshots of a foil exiting and re-entering water"></div>
+      <div class="feature-body"><div class="project-meta">Johns Hopkins · Multiphase CFD / FSI</div><h3>Two-phase flow with a moving immersed foil crossing the free surface</h3><p>Extended a sharp-interface immersed-boundary Navier–Stokes solver to air–water flow with algebraic VOF, fifth-order WENO convection, a variable-density pressure projection, balanced-force surface tension, phase-aware fresh-cell treatment, contact angle, and moving-body coupling.</p>
+      <div class="metric-row"><div class="metric"><b>8.3×10⁻⁶</b><span>relative liquid-volume change</span></div><div class="metric"><b>0.83</b><span>maximum CFL</span></div><div class="metric"><b>96 MPI</b><span>production ranks</span></div></div>
+      <div class="tags"><span>VOF</span><span>Immersed Boundary</span><span>WENO</span><span>Pressure Projection</span><span>MPI</span></div><div class="linkline"><a href="https://github.com/hrshl212/multiphase-fsi-showcase" target="_blank" rel="noopener">Repository ↗</a></div></div>
+    </article>
+
+    <article class="feature">
+      <div class="feature-media"><img src="https://raw.githubusercontent.com/hrshl212/c90-sector-cfd-dem/main/figures/validation/matched_liquid_flow.png" alt="Matched full-cylinder and C90 sector liquid-flow fields"></div>
+      <div class="feature-body"><div class="project-meta">Purdue · MFiX-Exa / AMReX · GPU CFD–DEM</div><h3>90° rotational cyclic-periodic infrastructure for reduced-domain CFD–DEM</h3><p>Developed and validated rotational mapping for scalars, vectors, particles, fluxes, particle-to-fluid sources, and the pressure projection on the rotational quotient space. The public repository documents a clean-room formulation and sanitized validation results without redistributing MFiX-Exa source.</p>
+      <div class="metric-row"><div class="metric"><b>1.62×10⁻¹⁰</b><span>quotient operator action error</span></div><div class="metric"><b>2.78×10⁻¹⁵</b><span>cross-rank contact symmetry error</span></div><div class="metric"><b>52.78%</b><span>DEM substep reduction from sorting</span></div></div>
+      <div class="tags"><span>CFD–DEM</span><span>AMReX</span><span>Rotational BC</span><span>Pressure Operator</span><span>GPU</span></div><div class="linkline"><a href="https://github.com/hrshl212/c90-sector-cfd-dem" target="_blank" rel="noopener">Repository ↗</a></div></div>
+    </article>
+  </div>
+
+  <div class="feature-grid" style="margin-top:18px">
+    <article class="feature">
+      <div class="feature-media"><img src="https://raw.githubusercontent.com/hrshl212/FlowFPMpp/main/docs/images/flapping_foil_216000.png" alt="Vorticity and force-partitioning fields around a flapping foil"></div>
+      <div class="feature-body"><div class="project-meta">Johns Hopkins · Fortran 2018 / MPI / OpenACC</div><h3>FlowFPM++ — GPU force-partitioning analysis for CFD</h3><p>Public rewrite of the core force-partitioning postprocessor used with VICAR3D simulations. Solves influence fields and decomposes pressure force into kinematic, vortex-induced, viscous, and outer-boundary contributions, with CPU/GPU parity and reproducible real-foil data.</p>
+      <div class="metric-row"><div class="metric"><b>6.9×</b><span>A100 vs 16 CPU ranks at 512×512×64</span></div><div class="metric"><b>2.5×10⁻¹⁶</b><span>CPU/GPU max field difference</span></div><div class="metric"><b>1.2 TB/s</b><span>Jacobi memory traffic</span></div></div>
+      <div class="tags"><span>OpenACC</span><span>MPI</span><span>PCG</span><span>Force Partitioning</span><span>A100</span></div><div class="linkline"><a href="https://github.com/hrshl212/FlowFPMpp" target="_blank" rel="noopener">Repository ↗</a></div></div>
+    </article>
+
+    <article class="feature">
+      <div class="feature-media"><img src="https://raw.githubusercontent.com/hrshl212/c90-sector-cfd-dem/main/figures/validation/matched_particle_geometry.png" alt="Full cylinder and C90 particle distributions"></div>
+      <div class="feature-body"><div class="project-meta">Purdue · Injection / particle-laden flow</div><h3>CFD–DEM modeling of injectable microparticle formulations</h3><p>Current research couples Eulerian carrier-fluid flow with Lagrangian particles, particle–particle and particle–wall interactions, a penalization-based immersed-boundary plunger, and validation of injection-force predictions. The work targets injectability, segregation, clogging, and efficient reduced-sector modeling.</p>
+      <div class="metric-row"><div class="metric"><b>432k+</b><span>particles in full-cylinder reference snapshot</span></div><div class="metric"><b>90°</b><span>validated reduced sector</span></div><div class="metric"><b>SJKR</b><span>cohesive contact modeling</span></div></div>
+      <div class="tags"><span>CFD–DEM</span><span>MFiX-Exa</span><span>Particles</span><span>IBM Plunger</span><span>Drug Delivery</span></div><div class="linkline"><a href="https://github.com/hrshl212/c90-sector-cfd-dem" target="_blank" rel="noopener">Technical portfolio ↗</a></div></div>
+    </article>
+  </div>
+
+  <div class="section-head" style="margin-top:66px"><div><div class="kicker">GPU & HPC engineering</div></div><div><h2>Numerical kernels and scalable solvers.</h2><p>CUDA projects that complement the multiphysics work with sparse linear algebra, multi-GPU communication, PyTorch extensions, and low-level performance experiments.</p></div></div>
+  <div class="cards">
+    <article class="card"><div class="project-meta">CUDA-aware MPI</div><h3>Multi-GPU BiCG / BiCGSTAB / Jacobi</h3><p>One MPI rank per GPU, GPU-resident halo exchange, masked CUDA kernels, and iterative PDE solves on NVIDIA A100s.</p><div class="metric-row"><div class="metric"><b>0.58 s</b><span>BiCGSTAB · 1024²</span></div><div class="metric"><b>6.05 s</b><span>Jacobi · 1024²</span></div></div><a href="https://github.com/hrshl212/Biconjugate-gradient--BiCGSTAB-and-Gauss-Jacobi-implementation-on-multi-GPU-system" target="_blank" rel="noopener">View repository ↗</a></article>
+    <article class="card"><div class="project-meta">Sparse linear algebra</div><h3>Preconditioned Conjugate Gradient in CUDA</h3><p>Incomplete-Cholesky PCG with CSR storage, warp-per-row sparse matrix–vector multiplication, and cuSPARSE triangular solves.</p><div class="tags"><span>CUDA 12</span><span>CSR</span><span>cuSPARSE</span><span>PCG</span></div><a href="https://github.com/hrshl212/Preconditioned-Conjugate-Gradient-Method-in-CUDA" target="_blank" rel="noopener">View repository ↗</a></article>
+    <article class="card"><div class="project-meta">PyTorch CUDA extension</div><h3>Transformer attention in CUDA</h3><p>Custom scaled dot-product attention in C++/CUDA with shared-memory optimization and integration through a PyTorch CUDA extension.</p><div class="tags"><span>CUDA</span><span>C++</span><span>PyTorch</span><span>Attention</span></div><a href="https://github.com/hrshl212/Transformer-Attention-Mechanism-in-CUDA" target="_blank" rel="noopener">View repository ↗</a></article>
+    <article class="card"><div class="project-meta">Performance study</div><h3>Matrix multiplication on NVIDIA A100</h3><p>Experiments with baseline CUDA, asynchronous streams, multi-GPU execution, and tensor-core paths, profiled with Nsight Systems.</p><div class="tags"><span>GEMM</span><span>Streams</span><span>Tensor Cores</span><span>Nsight</span></div><a href="https://github.com/hrshl212/Optimized-matrix-multiplication-in-CUDA" target="_blank" rel="noopener">View repository ↗</a></article>
+    <article class="card"><div class="project-meta">PyTorch custom ops</div><h3>Custom CUDA neural-network kernels</h3><p>CUDA kernels wrapped as differentiable PyTorch operators for experimenting with GPU execution and custom autograd integration.</p><div class="tags"><span>CUDA</span><span>PyTorch</span><span>Autograd</span></div><a href="https://github.com/hrshl212/Custom-CUDA-kernels-with-Neural-Network-Implementation" target="_blank" rel="noopener">View repository ↗</a></article>
+    <article class="card"><div class="project-meta">Reinforcement learning / C++</div><h3>TD3 with LibTorch</h3><p>C++ implementation work around deep reinforcement learning, complementing scientific-ML control work in CFD and heat transfer.</p><div class="tags"><span>C++</span><span>LibTorch</span><span>DRL</span></div><a href="https://github.com/hrshl212/TD3-libtorch" target="_blank" rel="noopener">View repository ↗</a></article>
+  </div>
+</section>
+
+<section class="band" id="experience"><div class="shell"><div class="section-head"><div><div class="kicker">Experience</div></div><div><h2>Solver development across multiphysics, scientific computing, and HPC.</h2></div></div><div class="timeline">
+  <div class="role"><time>2026 — Present</time><div><h3>Purdue University <span>· Postdoctoral Researcher</span></h3><p>CFD–DEM for injectable microparticle formulations, GPU-based MFiX-Exa/AMReX solver development, rotational-sector modeling, and tissue-transport modeling.</p></div></div>
+  <div class="role"><time>2022 — 2025</time><div><h3>Johns Hopkins University <span>· Postdoctoral Researcher</span></h3><p>Wave-assisted propulsion, immersed-boundary FSI, 3D/free-surface multiphase capability, force partitioning, irregular waves, and high-throughput CFD analysis.</p></div></div>
+  <div class="role"><time>2018 — 2022</time><div><h3>IIT Bombay <span>· Ph.D., Mechanical Engineering</span></h3><p>Sharp-interface multiphase/FSI methods for nucleate boiling, CUDA/MPI solver development, and deep-reinforcement-learning control of CFD systems.</p></div></div>
+</div></div></section>
+
+<section class="shell" id="publications"><div class="section-head"><div><div class="kicker">Selected publications</div></div><div><h2>Mechanistic CFD, multiphysics, and scientific ML.</h2></div></div><div class="pub-list">
+  <div class="pub"><div class="pub-year">2026</div><div><h3>Hydrodynamics of flapping foils undergoing irregular motion with application to wave-assisted propulsion</h3><p>Journal of Fluid Mechanics · Raut, Seo & Mittal</p></div></div>
+  <div class="pub"><div class="pub-year">2025</div><div><h3>Harnessing leading-edge vortices for improved thrust performance of wave-induced flapping foil propulsors</h3><p>Physical Review Fluids · Raut, Seo & Mittal</p></div></div>
+  <div class="pub"><div class="pub-year">2024</div><div><h3>Hydrodynamic performance and scaling laws for a modelled wave-induced flapping-foil propulsor</h3><p>Journal of Fluid Mechanics · Raut, Mittal & Seo</p></div></div>
+  <div class="pub"><div class="pub-year">2024</div><div><h3>A dual grid-based deep reinforcement learning and computational fluid dynamics method for flow control and its application to nucleate pool boiling</h3><p>International Journal of Heat and Mass Transfer · Raut, Bhattacharya & Sharma</p></div></div>
+</div><a class="biglink" href="https://scholar.google.com/citations?hl=en&user=o_7C9UMAAAAJ" target="_blank" rel="noopener">Complete publication record on Google Scholar ↗</a></section>
+
+<section class="shell" id="contact"><div class="contact"><div><div class="kicker">Contact</div><h2>Computational engineering, CFD, GPU/HPC, or scientific software.</h2><p>I am interested in technically deep work combining physics-based modeling, numerical methods, performance engineering, and scalable scientific software.</p></div><div class="contact-actions"><a class="btn primary" href="mailto:hraut@purdue.edu">hraut@purdue.edu</a><a class="btn" href="https://www.linkedin.com/in/harshal-raut-phd-62506179" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://github.com/hrshl212" target="_blank" rel="noopener">GitHub ↗</a></div></div></section>
+</main>
+<footer><div class="shell footer"><span>© 2026 Harshal S. Raut</span><span>Static portfolio · deployable on GitHub Pages</span></div></footer>
+</body>
+</html>
