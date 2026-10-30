@@ -22,14 +22,17 @@ Last updated: 2026-10-30
 1. Academic hero and primary links.
 2. Research record and philosophy.
 3. Ph.D. spotlight with the two GIFs and one MP4.
-4. Four-part research program.
-5. Selected publications.
-6. Academic path, teaching, awards, and peer review.
-7. Contact and profile links.
+4. Paired postdoctoral case studies: JHU multiphase FSI and Purdue C90 CFD-DEM.
+5. Four-part broader research program.
+6. Selected publications.
+7. Academic path, teaching, awards, and peer review.
+8. Contact and profile links.
 
 ## Source of truth
 
 - Academic facts and publication metadata: `assets/Harshal_Raut_CV.pdf`.
+- JHU multiphase FSI methods and validation: `https://github.com/hrshl212/multiphase-fsi-showcase`.
+- Purdue rotational-sector formulation, validation, performance, and limitations: `https://github.com/hrshl212/c90-sector-cfd-dem`.
 - Complete publication record: Google Scholar.
 - Deployment repository: `https://github.com/hrshl212/hrshl212.github.io`.
 - Production URL: `https://hrshl212.github.io/`.
@@ -40,3 +43,4 @@ Last updated: 2026-10-30
 - Preserve relative paths for local assets so the site works on GitHub Pages and in local previews.
 - Optimize added media before committing; current research media are intentionally under 1 MB each.
 - Avoid unsupported claims about job-market status or teaching evaluations.
+- Preserve the explicit C90 scope qualification: sustained coupled multi-rank pressure evolution is not claimed.

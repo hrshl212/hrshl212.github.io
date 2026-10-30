@@ -111,6 +111,23 @@
     .phd-note { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 32px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.16); }
     .phd-note h3 { margin: 0; font: 500 28px/1.1 var(--serif); }
     .phd-note p { margin: 0; color: #bdc8c2; }
+    .featured-work { background: var(--paper-deep); border-bottom: 1px solid var(--line); }
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .case-study { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--white); }
+    .case-visual { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #dce3de; border-bottom: 1px solid var(--line); }
+    .case-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .case-study:hover .case-visual img { transform: scale(1.025); }
+    .case-institution { position: absolute; left: 14px; top: 14px; padding: 7px 10px; border-radius: 999px; background: rgba(20, 37, 31, .88); color: white; font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; backdrop-filter: blur(8px); }
+    .case-body { padding: 28px; }
+    .case-body h3 { margin: 10px 0 12px; font: 500 29px/1.08 var(--serif); letter-spacing: -.025em; }
+    .case-body > p { margin: 0; color: var(--muted); font-size: 14px; }
+    .case-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 24px 0; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .case-metric { padding: 14px 12px; background: #f7f3eb; }
+    .case-metric strong { display: block; color: var(--green); font: 500 19px/1.05 var(--serif); }
+    .case-metric span { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; font-weight: 750; line-height: 1.35; text-transform: uppercase; letter-spacing: .06em; }
+    .case-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; }
+    .case-footer .tag-row { margin: 0; }
+    .case-note { margin-top: 18px !important; padding-top: 16px; border-top: 1px solid var(--line); font-size: 11px !important; }
     .program-list { border-top: 1px solid var(--line); }
     .program { display: grid; grid-template-columns: 90px .75fr 1.25fr; gap: 28px; padding: 30px 0; border-bottom: 1px solid var(--line); }
     .program-index { color: var(--rust); font: italic 23px var(--serif); }
@@ -161,6 +178,7 @@
       .method:last-child { border-bottom: 0; }
       .media-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
       .research-media.large { grid-column: 1 / -1; grid-row: auto; min-height: 560px; }
+      .case-grid { grid-template-columns: 1fr; }
       .career-grid { grid-template-columns: 1fr; gap: 42px; }
     }
     @media (max-width: 760px) {
@@ -181,6 +199,8 @@
       .media-grid { grid-template-columns: 1fr; }
       .research-media, .research-media.large { grid-column: auto; min-height: 410px; }
       .phd-note { grid-template-columns: 1fr; }
+      .case-metrics { grid-template-columns: 1fr; }
+      .case-footer { align-items: flex-start; flex-direction: column; }
       .program { grid-template-columns: 52px 1fr; }
       .program p, .program .tag-row { grid-column: 2; }
       .pub { grid-template-columns: 58px 1fr; gap: 15px; }
@@ -212,7 +232,7 @@
       <a class="brand" href="#top" aria-label="Harshal Raut, home"><span class="brand-mark">HR</span><span>Harshal S. Raut</span></a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
-        <a href="#research">Research</a><a href="#phd-work">Ph.D. work</a><a href="#publications">Publications</a><a href="#academic">Academic path</a><a class="nav-cv" href="assets/Harshal_Raut_CV.pdf" target="_blank">Curriculum vitae</a>
+        <a href="#research">Research</a><a href="#phd-work">Ph.D. work</a><a href="#postdoc-work">Postdoc work</a><a href="#publications">Publications</a><a class="nav-cv" href="assets/Harshal_Raut_CV.pdf" target="_blank">Curriculum vitae</a>
       </div>
     </nav>
   </header>
@@ -258,9 +278,37 @@
         <div class="phd-note"><h3>One solver, three scientific outcomes.</h3><p>The work established lock-on mechanisms in forced boiling, extended the method to 3D multi-site configurations, enabled a dual-grid deep-reinforcement-learning framework, and contributed to an issued patent for sustaining nucleate boiling in zero gravity.</p></div>
       </div>
     </section>
+    <section class="featured-work" id="postdoc-work">
+      <div class="shell">
+        <div class="section-head"><div class="section-label">Postdoctoral case studies</div><div><h2>New computational capability, tested against difficult physics.</h2><p>These open technical portfolios document formulation, implementation choices, validation, performance, and limitations from my work at Johns Hopkins and Purdue.</p></div></div>
+        <div class="case-grid">
+          <article class="case-study">
+            <div class="case-visual"><img src="https://raw.githubusercontent.com/hrshl212/multiphase-fsi-showcase/main/figures/surface_piercing_vorticity.png" alt="Vorticity snapshots of a moving foil exiting and re-entering a free surface" loading="lazy"><span class="case-institution">Johns Hopkins · Multiphase CFD / FSI</span></div>
+            <div class="case-body">
+              <div class="section-label">Sharp-interface solver development</div>
+              <h3>Two-phase flow with a moving immersed foil crossing the free surface</h3>
+              <p>I extended an immersed-boundary Navier-Stokes framework to air-water flow using algebraic VOF, fifth-order WENO convection, a variable-density pressure projection, balanced-force surface tension, phase-aware fresh-cell treatment, contact-angle modeling, and moving-body coupling.</p>
+              <div class="case-metrics"><div class="case-metric"><strong>8.3×10⁻⁶</strong><span>Relative liquid-volume change</span></div><div class="case-metric"><strong>5×10⁻⁸</strong><span>Maximum divergence</span></div><div class="case-metric"><strong>96 MPI</strong><span>Production ranks</span></div></div>
+              <div class="case-footer"><div class="tag-row"><span class="tag">VOF</span><span class="tag">Immersed boundary</span><span class="tag">WENO</span><span class="tag">MPI</span></div><a class="text-link" href="https://github.com/hrshl212/multiphase-fsi-showcase" target="_blank" rel="noopener">Explore repository ↗</a></div>
+            </div>
+          </article>
+          <article class="case-study">
+            <div class="case-visual"><img src="https://raw.githubusercontent.com/hrshl212/c90-sector-cfd-dem/main/figures/validation/matched_liquid_flow.png" alt="Matched full-cylinder and 90-degree-sector liquid velocity fields" loading="lazy"><span class="case-institution">Purdue · MFiX-Exa / AMReX · GPU CFD-DEM</span></div>
+            <div class="case-body">
+              <div class="section-label">Rotational quotient-space formulation</div>
+              <h3>A validated 90° cyclic sector for coupled CFD-DEM</h3>
+              <p>The sector framework maps scalars across radial faces, rotates vectors by 90°, wraps particles and their contact images, conserves fluxes and particle-to-fluid sources, and makes the pressure projection act on the rotational quotient space.</p>
+              <div class="case-metrics"><div class="case-metric"><strong>1.62×10⁻¹⁰</strong><span>Quotient-operator action error</span></div><div class="case-metric"><strong>2.78×10⁻¹⁵</strong><span>Cross-rank contact symmetry error</span></div><div class="case-metric"><strong>52.78%</strong><span>DEM-substep reduction from sorting</span></div></div>
+              <div class="case-footer"><div class="tag-row"><span class="tag">CFD-DEM</span><span class="tag">Rotational BC</span><span class="tag">AMReX</span><span class="tag">GPU</span></div><a class="text-link" href="https://github.com/hrshl212/c90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
+              <p class="case-note"><b>Qualification:</b> coupled production results use one MPI rank. Focused two-rank particle tests and a one-step coupled comparison pass; sustained coupled multi-rank pressure evolution is not claimed.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
     <section>
       <div class="shell">
-        <div class="section-head"><div class="section-label">Research program</div><div><h2>Fluid mechanics across scales and applications.</h2><p>Across my Ph.D. and postdoctoral work, I pursue questions where new computational capability can unlock a new physical explanation.</p></div></div>
+        <div class="section-head"><div class="section-label">Broader research program</div><div><h2>Fluid mechanics across scales and applications.</h2><p>Across my Ph.D. and postdoctoral work, I pursue questions where new computational capability can unlock a new physical explanation.</p></div></div>
         <div class="program-list">
           <article class="program"><div class="program-index">01</div><h3>Unsteady FSI and wave-assisted propulsion</h3><div><p>High-fidelity immersed-boundary simulations of passive-pitch flapping foils reveal how leading-edge vortices, irregular forcing, geometry, and multi-foil wakes generate thrust. More than 450 simulations supported an interpretable vortex-based thrust model.</p><div class="tag-row"><span class="tag">Hydrodynamics</span><span class="tag">Immersed boundary</span><span class="tag">Force partitioning</span><span class="tag">Reduced modeling</span></div></div></article>
           <article class="program"><div class="program-index">02</div><h3>Multiphase flow and phase change</h3><div><p>Sharp-interface methods for boiling with moving solids connect interface dynamics to heat transfer and flow control. Current extensions include 3D VOF-based free-surface flow coupled to moving immersed bodies.</p><div class="tag-row"><span class="tag">Level set</span><span class="tag">VOF</span><span class="tag">Phase change</span><span class="tag">Scientific ML</span></div></div></article>
