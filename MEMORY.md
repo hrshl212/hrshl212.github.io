@@ -1,54 +1,42 @@
-# Portfolio project memory
+# Academic portfolio project memory
 
-Last updated: 2026-10-10
+Last updated: 2026-10-30
 
-## Purpose and positioning
+## Positioning
 
-- This is Harshal S. Raut's technical portfolio for computational science, CFD, multiphysics, numerical methods, and GPU/HPC scientific software.
-- The primary professional label is **Computational scientist · GPU/HPC**.
-- Do not use “Mechanical Engineer” in the homepage identity or metadata unless explicitly requested otherwise.
-- Keep **Ph.D., Mechanical Engineering** in the experience timeline because it is an academic credential.
+- Primary audience: academic search committees, research collaborators, and students.
+- Core narrative: high-fidelity computation -> physical mechanism -> reduced model or control strategy.
+- Current role: Postdoctoral Researcher at Purdue University.
+- Main fields: computational fluid dynamics, fluid-structure interaction, multiphase flow, phase change, particle transport, scientific machine learning, and high-performance computing.
 
-## Design decisions
+## Design system
 
-- Preserve the dark navy visual system with teal and light-blue accents; it supports the technical/scientific tone and works well with the simulation imagery.
-- Current core colors are defined in `index.html`: background `#06111a`, text `#eef5f7`, muted text `#9fb1bc`, teal accent `#61d6c4`, and blue accent `#7eb7ff`.
-- Keep the CFD free-surface animation as the hero visual. It should remain the strongest visual statement of technical expertise.
-- `Photo.png` is retained as an available asset but is not currently displayed on the site.
-- Possible future refinement: slightly brighten low-priority gray text after checking contrast on dim displays. This is a suggestion, not an approved change.
+- Warm editorial visual language: paper background, deep green ink, rust accents, serif display typography, and compact sans-serif supporting text.
+- The homepage is research-led rather than project-card-led.
+- The Ph.D. media are first-class scientific evidence. Preserve their captions and accessible alt text.
+- The hero combines the oscillating-base-plate animation with `Photo.png`.
+- The design is fully responsive and includes a keyboard-accessible skip link and mobile navigation.
 
-## Site structure
+## Content architecture
 
-- `index.html` contains the complete site and inline CSS.
-- `Photo.png` is an available profile portrait asset.
-- `assets/Harshal_Raut_CV.pdf` is the downloadable academic CV.
-- `assets/Harshal_Raut_GPU_Computational_Industry_Resume_Final.pdf` is the current résumé linked from the hero with the button label **Resume**.
-- Flagship project images are loaded from Harshal's public GitHub repositories through `raw.githubusercontent.com`.
-- Main sections: hero, statistics, projects, GPU/HPC engineering, experience, publications, and contact.
+1. Academic hero and primary links.
+2. Research record and philosophy.
+3. Ph.D. spotlight with the two GIFs and one MP4.
+4. Four-part research program.
+5. Selected publications.
+6. Academic path, teaching, awards, and peer review.
+7. Contact and profile links.
 
-## Deployment
+## Source of truth
 
-- Repository: `https://github.com/hrshl212/hrshl212.github.io`
-- Production branch: `main`
-- Published site: `https://hrshl212.github.io/`
-- GitHub Pages serves the static files from the repository root.
+- Academic facts and publication metadata: `assets/Harshal_Raut_CV.pdf`.
+- Complete publication record: Google Scholar.
+- Deployment repository: `https://github.com/hrshl212/hrshl212.github.io`.
+- Production URL: `https://hrshl212.github.io/`.
 
-## Recent decisions and changes
+## Maintenance
 
-- 2026-10-09: Removed “Mechanical Engineer” from the meta description and homepage eyebrow.
-- 2026-10-09: Retained “Ph.D., Mechanical Engineering” in the IIT Bombay experience entry.
-- 2026-10-09: Added and styled `Photo.png` in the Experience section while retaining the CFD animation in the hero.
-- The website changes above were pushed in commit `4e8230c`.
-- 2026-10-10: Restored “Mechanical engineer” in the homepage identity and metadata.
-- 2026-10-10: Replaced the hero's Academic CV button with an Industry Resume button.
-- 2026-10-10: Removed the portrait from the visible Experience section while retaining `Photo.png` as an asset.
-- 2026-10-10: Reordered the GPU/HPC project cards.
-- 2026-10-10: Removed “Mechanical Engineer” from the homepage identity and metadata again, establishing **Computational scientist · GPU/HPC** as the current label.
-- 2026-10-10: Shortened the hero button label from “Industry Resume” to “Resume.”
-- 2026-10-10: Updated the hero's Resume link to `Harshal_Raut_GPU_Computational_Industry_Resume_Final.pdf` after validating its two-page rendering.
-
-## Maintenance guidance
-
-- Keep claims, publication counts, dates, roles, performance numbers, contact details, and CV links synchronized with their authoritative sources.
-- Preserve accessible alt text and responsive behavior when changing images or layout.
-- Record meaningful content, design, deployment, and positioning decisions in this file after future updates.
+- Keep the current appointment, publication count, patent count, contact details, and selected papers synchronized with the CV.
+- Preserve relative paths for local assets so the site works on GitHub Pages and in local previews.
+- Optimize added media before committing; current research media are intentionally under 1 MB each.
+- Avoid unsupported claims about job-market status or teaching evaluations.

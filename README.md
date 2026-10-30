@@ -1,44 +1,29 @@
-# Harshal Raut portfolio website
+# Harshal S. Raut - academic portfolio
 
-A lightweight static portfolio built from the public repositories at <https://github.com/hrshl212>.
+A responsive academic website for computational fluid dynamicist Harshal S. Raut, Ph.D. The site foregrounds research questions, numerical methods, selected scholarship, teaching, service, and academic appointments.
 
-## Files
+## Structure
 
-- `index.html` — entire responsive website (CSS included inline).
-- `MEMORY.md` — project decisions, design guidance, and deployment context for future updates.
-- `Photo.png` — profile portrait retained as an available site asset.
-- `assets/Harshal_Raut_CV.pdf` — academic CV linked from the homepage.
-- `assets/Harshal_Raut_GPU_Computational_Industry_Resume_Final.pdf` — current résumé linked from the homepage.
-- `.nojekyll` — tells GitHub Pages to serve the site as plain static files.
+- `index.html` - complete static site with embedded CSS and minimal JavaScript.
+- `Photo.png` - portrait used in the hero.
+- `assets/Harshal_Raut_CV.pdf` - downloadable academic CV.
+- `assets/research/` - two animated GIFs and one MP4 from Ph.D. research on nucleate boiling.
+- `.nojekyll` - serves the repository as a plain static GitHub Pages site.
 
-## Recommended deployment: `hrshl212.github.io`
+## Local preview
 
-1. On GitHub, create a **public repository named exactly** `hrshl212.github.io`.
-2. Extract this package and put `index.html`, `.nojekyll`, and the `assets/` folder at the repository root.
-3. Commit/push the files to the `main` branch.
-4. Open the repository on GitHub and go to **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select branch **main** and folder **/(root)**, then save.
-7. After the Pages deployment completes, the site will be available at `https://hrshl212.github.io/`.
+From the repository root, run any static file server, for example:
 
-## Alternative deployment from another repository name
+```powershell
+python -m http.server 8000
+```
 
-If you create a repo such as `portfolio`, use the same steps. The default URL will be:
+Then open `http://localhost:8000/`.
 
-`https://hrshl212.github.io/portfolio/`
+## Deployment
 
-Because the site uses relative links for local files and absolute GitHub URLs for repository images, no code changes are needed.
+This repository is configured for the GitHub Pages user site at <https://hrshl212.github.io/>. Push changes to `main`; GitHub Pages serves the repository root.
 
-## Updating project content
+## Content sources
 
-The project images are served from the public GitHub repositories through `raw.githubusercontent.com`. When the referenced file at the same path changes, the portfolio automatically displays the new asset.
-
-Current flagship repositories:
-
-- https://github.com/hrshl212/multiphase-fsi-showcase
-- https://github.com/hrshl212/c90-sector-cfd-dem
-- https://github.com/hrshl212/FlowFPMpp
-
-## Custom domain (optional)
-
-Once GitHub Pages is working, add a custom domain under **Settings → Pages → Custom domain**. If you later use a custom domain, also add a `CNAME` file at the repository root containing only the domain name.
+Academic claims, dates, publications, awards, and teaching details are synchronized with `assets/Harshal_Raut_CV.pdf`. Update both the CV and website when the record changes.
