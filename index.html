@@ -114,8 +114,8 @@
     .featured-work { background: var(--paper-deep); border-bottom: 1px solid var(--line); }
     .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .case-study { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--white); }
-    .case-visual { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #dce3de; border-bottom: 1px solid var(--line); }
-    .case-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .case-visual { position: relative; aspect-ratio: 2/1; overflow: hidden; background: white; border-bottom: 1px solid var(--line); }
+    .case-visual img { width: 100%; height: 100%; object-fit: contain; transition: transform .45s ease; }
     .case-study:hover .case-visual img { transform: scale(1.025); }
     .case-institution { position: absolute; left: 14px; top: 14px; padding: 7px 10px; border-radius: 999px; background: rgba(20, 37, 31, .88); color: white; font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; backdrop-filter: blur(8px); }
     .case-body { padding: 28px; }
@@ -283,7 +283,7 @@
         <div class="section-head"><div class="section-label">Postdoctoral case studies</div><div><h2>New computational capability, tested against difficult physics.</h2><p>These open technical portfolios document formulation, implementation choices, validation, performance, and limitations from my work at Johns Hopkins and Purdue.</p></div></div>
         <div class="case-grid">
           <article class="case-study">
-            <div class="case-visual"><img src="https://raw.githubusercontent.com/hrshl212/multiphase-fsi-showcase/main/figures/surface_piercing_vorticity.png" alt="Vorticity snapshots of a moving foil exiting and re-entering a free surface" loading="lazy"><span class="case-institution">Johns Hopkins · Multiphase CFD / FSI</span></div>
+            <div class="case-visual"><img src="assets/research/flapping-foil-near-free-surface.gif" alt="Animated vorticity simulation of a flapping foil moving near and through a free surface" loading="lazy"><span class="case-institution">Johns Hopkins · Multiphase CFD / FSI</span></div>
             <div class="case-body">
               <div class="section-label">Sharp-interface solver development</div>
               <h3>Two-phase flow with a moving immersed foil crossing the free surface</h3>
@@ -293,7 +293,7 @@
             </div>
           </article>
           <article class="case-study">
-            <div class="case-visual"><img src="https://raw.githubusercontent.com/hrshl212/c90-sector-cfd-dem/main/figures/validation/matched_liquid_flow.png" alt="Matched full-cylinder and 90-degree-sector liquid velocity fields" loading="lazy"><span class="case-institution">Purdue · MFiX-Exa / AMReX · GPU CFD-DEM</span></div>
+            <div class="case-visual"><img src="assets/research/injection-of-microparticle-suspensions.gif" alt="Animated CFD-DEM simulation of particle-laden suspension injection through a syringe needle" loading="lazy"><span class="case-institution">Purdue · MFiX-Exa / AMReX · GPU CFD-DEM</span></div>
             <div class="case-body">
               <div class="section-label">Rotational quotient-space formulation</div>
               <h3>A validated 90° cyclic sector for coupled CFD-DEM</h3>
