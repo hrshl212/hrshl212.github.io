@@ -14,7 +14,7 @@ Last updated: 2026-10-30
 - Warm editorial visual language: paper background, deep green ink, rust accents, serif display typography, and compact sans-serif supporting text.
 - The homepage is research-led rather than project-card-led.
 - The Ph.D. media are first-class scientific evidence. Preserve their captions and accessible alt text.
-- The postdoctoral case-study media use local animated GIFs: flapping-foil/free-surface work for Johns Hopkins and microparticle injection for Purdue. Preserve the full scientific frame with `object-fit: contain`.
+- The JHU postdoctoral case study uses the public repository's `figures/surface_piercing.gif`. The Purdue case study uses the local `injection-of-microparticle-suspensions.mp4` with muted looping autoplay, inline playback, and controls. Preserve the full scientific frame with `object-fit: contain`.
 - The hero combines the oscillating-base-plate animation with `Photo.png`.
 - The design is fully responsive and includes a keyboard-accessible skip link and mobile navigation.
 

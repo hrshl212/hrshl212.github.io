@@ -9,7 +9,7 @@ Two open postdoctoral case studies connect directly to the public technical port
 - `index.html` - complete static site with embedded CSS and minimal JavaScript.
 - `Photo.png` - portrait used in the hero.
 - `assets/Harshal_Raut_CV.pdf` - downloadable academic CV.
-- `assets/research/` - four animated GIFs and one MP4 spanning Ph.D. boiling research and postdoctoral work at Johns Hopkins and Purdue.
+- `assets/research/` - two animated GIFs and two MP4 files spanning Ph.D. boiling research and Purdue postdoctoral work. The JHU free-surface animation is loaded from its public technical repository.
 - `.nojekyll` - serves the repository as a plain static GitHub Pages site.
 
 ## Local preview
