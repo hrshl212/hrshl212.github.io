@@ -1,10 +1,10 @@
 # Academic portfolio project memory
 
-Last updated: 2026-10-30
+Last updated: 2026-11-04
 
 ## Positioning
 
-- Primary audience: academic search committees, research collaborators, and students.
+- Primary audience: academic search committees, research collaborators, and students. Secondary audience (added 2026-11-04): industry recruiters for GPU/HPC roles, served by the `#gpu-work` section.
 - Core narrative: high-fidelity computation -> physical mechanism -> reduced model or control strategy.
 - Current role: Postdoctoral Researcher at Purdue University.
 - Main fields: computational fluid dynamics, fluid-structure interaction, multiphase flow, phase change, particle transport, scientific machine learning, and high-performance computing.
@@ -21,19 +21,22 @@ Last updated: 2026-10-30
 ## Content architecture
 
 1. Academic hero and primary links.
-2. Research record and philosophy.
-3. Ph.D. spotlight with the two GIFs and one MP4.
-4. Paired postdoctoral case studies: JHU multiphase FSI and Purdue C90 CFD-DEM.
-5. Four-part broader research program.
-6. Selected publications.
-7. Academic path, teaching, awards, and peer review.
-8. Contact and profile links.
+2. Research record strip.
+3. GPU & HPC engineering (`#gpu-work`, nav link "GPU work"): FlowFPM++ CPU-to-GPU port, speedup table, profiling-driven optimization list, repository link. Planned: add multi-GPU scaling and GPU-aware MPI results once measured.
+4. Research philosophy.
+5. Ph.D. spotlight with the two GIFs and one MP4.
+6. Paired postdoctoral case studies: JHU multiphase FSI and Purdue C90 CFD-DEM.
+7. Four-part broader research program.
+8. Selected publications.
+9. Academic path, teaching, awards, and peer review.
+10. Contact and profile links.
 
 ## Source of truth
 
 - Academic facts and publication metadata: `assets/Harshal_Raut_CV.pdf`.
 - JHU multiphase FSI methods and validation: `https://github.com/hrshl212/multiphase-fsi-showcase`.
 - Purdue rotational-sector formulation, validation, performance, and limitations: `https://github.com/hrshl212/c90-sector-cfd-dem`.
+- FlowFPM++ GPU numbers (speedups, hardware, optimization log): `https://github.com/hrshl212/FlowFPMpp` README Performance section. Keep website numbers identical to it.
 - Complete publication record: Google Scholar.
 - Deployment repository: `https://github.com/hrshl212/hrshl212.github.io`.
 - Production URL: `https://hrshl212.github.io/`.

@@ -128,6 +128,34 @@
     .case-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; }
     .case-footer .tag-row { margin: 0; }
     .case-note { margin-top: 18px !important; padding-top: 16px; border-top: 1px solid var(--line); font-size: 11px !important; }
+    .gpu-section { background: var(--white); border-bottom: 1px solid var(--line); }
+    .gpu-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
+    .gpu-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-bottom: 30px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .gpu-metric { padding: 18px 16px; background: #f7f3eb; }
+    .gpu-metric strong { display: block; color: var(--green); font: 500 32px/1 var(--serif); letter-spacing: -.03em; }
+    .gpu-metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; font-weight: 750; line-height: 1.35; text-transform: uppercase; letter-spacing: .06em; }
+    .gpu-block { margin-bottom: 30px; }
+    .gpu-block h3 { margin: 0 0 12px; font: 500 24px/1.15 var(--serif); }
+    .gpu-block > p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .gpu-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    .gpu-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+    .gpu-table th, .gpu-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    .gpu-table th:first-child, .gpu-table td:first-child { text-align: left; }
+    .gpu-table th { background: #f7f3eb; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .gpu-table tr:last-child td { border-bottom: 0; }
+    .gpu-table td.win { color: var(--green); font-weight: 800; }
+    .opt-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .opt-list li { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: #3f4f48; }
+    .opt-list li b { display: block; color: var(--ink); font-weight: 750; }
+    .opt-list li span.gain { align-self: center; color: var(--rust); font: 500 17px var(--serif); white-space: nowrap; }
+    .gpu-figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: white; }
+    .gpu-figure img { width: 100%; height: auto; }
+    .gpu-figure figcaption { padding: 14px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .gpu-aside { position: sticky; top: 96px; display: grid; gap: 18px; }
+    .gpu-next { padding: 20px 22px; border-radius: 16px; background: var(--green); color: #d2dfd8; font-size: 13px; }
+    .gpu-next .section-label { color: #f2b09a; margin-bottom: 8px; }
+    .gpu-next ul { margin: 0; padding-left: 18px; }
+    .gpu-method { margin: 14px 0 0; color: var(--muted); font-size: 11px; }
     .program-list { border-top: 1px solid var(--line); }
     .program { display: grid; grid-template-columns: 90px .75fr 1.25fr; gap: 28px; padding: 30px 0; border-bottom: 1px solid var(--line); }
     .program-index { color: var(--rust); font: italic 23px var(--serif); }
@@ -179,6 +207,9 @@
       .media-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
       .research-media.large { grid-column: 1 / -1; grid-row: auto; min-height: 560px; }
       .case-grid { grid-template-columns: 1fr; }
+      .gpu-grid { grid-template-columns: 1fr; }
+      .gpu-aside { position: static; max-width: 560px; }
+      .gpu-metrics { grid-template-columns: repeat(2, 1fr); }
       .career-grid { grid-template-columns: 1fr; gap: 42px; }
     }
     @media (max-width: 760px) {
@@ -200,6 +231,7 @@
       .research-media, .research-media.large { grid-column: auto; min-height: 410px; }
       .phd-note { grid-template-columns: 1fr; }
       .case-metrics { grid-template-columns: 1fr; }
+      .opt-list li { grid-template-columns: 1fr; gap: 4px; }
       .case-footer { align-items: flex-start; flex-direction: column; }
       .program { grid-template-columns: 52px 1fr; }
       .program p, .program .tag-row { grid-column: 2; }
@@ -232,7 +264,7 @@
       <a class="brand" href="#top" aria-label="Harshal Raut, home"><span class="brand-mark">HR</span><span>Harshal S. Raut</span></a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
-        <a href="#research">Research</a><a href="#phd-work">Ph.D. work</a><a href="#postdoc-work">Postdoc work</a><a href="#publications">Publications</a><a class="nav-cv" href="assets/Harshal_Raut_CV.pdf" target="_blank">Curriculum vitae</a>
+        <a href="#gpu-work">GPU work</a><a href="#research">Research</a><a href="#phd-work">Ph.D. work</a><a href="#postdoc-work">Postdoc work</a><a href="#publications">Publications</a><a class="nav-cv" href="assets/Harshal_Raut_CV.pdf" target="_blank">Curriculum vitae</a>
       </div>
     </nav>
   </header>
@@ -257,6 +289,50 @@
         <div class="datum"><strong>11</strong><span>Peer-reviewed journal articles</span></div><div class="datum"><strong>1</strong><span>Issued patent</span></div><div class="datum"><strong>5.5×</strong><span>Lower DRL training cost</span></div><div class="datum"><strong>85%</strong><span>Parallel efficiency on 400 CPU cores</span></div>
       </div>
     </div>
+    <section class="gpu-section" id="gpu-work">
+      <div class="shell">
+        <div class="section-head"><div class="section-label">GPU &amp; HPC engineering · FlowFPM++</div><div><h2>Porting a CPU research code to GPUs, guided by profiling.</h2><p>I took a validated MPI post-processor for flow simulations and rebuilt its compute core to run on NVIDIA GPUs with MPI + OpenACC. The CPU version stayed the numerical reference throughout: every GPU kernel was checked field by field against it, then profiled and optimized one measured change at a time. The core workload is a large 3-D Poisson-type solve on stretched grids with immersed solid bodies, followed by volume integrals over millions of cells.</p></div></div>
+        <div class="gpu-metrics">
+          <div class="gpu-metric"><strong>117×</strong><span>Faster solver sweep than one CPU core (4.2M cells)</span></div>
+          <div class="gpu-metric"><strong>6.9×</strong><span>Faster time-to-solution than 16 MPI ranks (16.8M cells)</span></div>
+          <div class="gpu-metric"><strong>~80%</strong><span>Of A100 peak memory bandwidth sustained</span></div>
+          <div class="gpu-metric"><strong>10⁻¹⁷</strong><span>CPU/GPU agreement on an 87M-cell production frame</span></div>
+        </div>
+        <div class="gpu-grid">
+          <div>
+            <div class="gpu-block">
+              <h3>Time to solution, CPU versus one GPU</h3>
+              <p>Full pipeline per grid: setup, preconditioned conjugate-gradient solve to a 10⁻⁸ residual, and force integrals, including every host-device transfer.</p>
+              <div class="gpu-table-wrap"><table class="gpu-table">
+                <thead><tr><th>Grid (cells)</th><th>16 CPU ranks</th><th>1 × A100</th><th>Speedup</th></tr></thead>
+                <tbody>
+                  <tr><td>128×128×32 (0.5M)</td><td>0.185 s</td><td>0.176 s</td><td class="win">1.1×</td></tr>
+                  <tr><td>256×256×64 (4.2M)</td><td>5.19 s</td><td>1.25 s</td><td class="win">4.2×</td></tr>
+                  <tr><td>512×512×64 (16.8M)</td><td>49.2 s</td><td>7.11 s</td><td class="win">6.9×</td></tr>
+                </tbody>
+              </table></div>
+              <p class="gpu-method">NVIDIA A100-PCIE-40GB versus Intel Xeon Gold 6248R; NVIDIA HPC SDK 25.5, one binary for both CPU and GPU runs; medians of three runs after warm-up. On one CPU core the 4.2M-cell solve takes 57.6 s (46× slower than the GPU). Small grids that fit in the CPU caches show little gain, and the repository reports those results too.</p>
+            </div>
+            <div class="gpu-block">
+              <h3>Profile, change, measure</h3>
+              <p>Each change was driven by a profile (NVHPC kernel timing and Nsight Systems) and measured against the previous build on the same node.</p>
+              <ul class="opt-list">
+                <li><div><b>Keep data resident on the GPU</b>Profiling showed 11 field uploads and 5 downloads around a 0.7 ms kernel; a frame-level data region removed them.</div><span class="gain">5× faster terms</span></li>
+                <li><div><b>Remove a copy kernel</b>Ping-pong between two padded buffers instead of copying back after every sweep.</div><span class="gain">1.5× per sweep</span></li>
+                <li><div><b>Build solver setup on the device</b>Coefficients and preconditioner built in GPU kernels, not uploaded from the host.</div><span class="gain">no per-solve uploads</span></li>
+                <li><div><b>Change the algorithm</b>Replaced Jacobi iteration (900k sweeps) with preconditioned conjugate gradients, with GPU reductions and breakdown guards.</div><span class="gain">87× faster solve</span></li>
+                <li><div><b>Fix GPU-only correctness bugs</b>Found residual drift and a stop condition the compiled GPU loop did not see; both fixed and covered by tests.</div><span class="gain">regression-tested</span></li>
+              </ul>
+            </div>
+            <div class="case-footer"><div class="tag-row"><span class="tag">OpenACC</span><span class="tag">MPI</span><span class="tag">Modern Fortran</span><span class="tag">NVIDIA A100</span><span class="tag">Nsight Systems</span><span class="tag">Krylov solvers</span><span class="tag">CI testing</span></div><a class="text-link" href="https://github.com/hrshl212/FlowFPMpp" target="_blank" rel="noopener">Explore repository ↗</a></div>
+          </div>
+          <aside class="gpu-aside">
+            <figure class="gpu-figure"><img src="https://raw.githubusercontent.com/hrshl212/FlowFPMpp/main/docs/images/flapping_foil_216000.png" alt="Vorticity and force-density fields around a flapping foil computed by FlowFPM++" loading="lazy"><figcaption><b>Real data, 4 minutes on one CPU core, 6 seconds on one A100.</b> Vorticity and per-cell force densities around a flapping foil, from a frame shipped with the repository.</figcaption></figure>
+            <div class="gpu-next"><div class="section-label">Also in the repository</div><ul><li>Domain decomposition with MPI halo exchange, validated on 1-6 ranks</li><li>CPU test suite and GitHub Actions CI that run without a GPU</li><li>Raw benchmark data and the job scripts that produced it</li><li>In progress: multi-GPU scaling and GPU-aware MPI</li></ul></div>
+          </aside>
+        </div>
+      </div>
+    </section>
     <section id="research">
       <div class="shell">
         <div class="section-head"><div class="section-label">Research philosophy</div><div><h2>From numerical method to physical insight.</h2><p>My work connects three layers that are often treated separately: faithful mathematical representation, high-performance simulation, and interpretable scientific discovery.</p></div></div>
