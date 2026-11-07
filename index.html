@@ -156,6 +156,7 @@
     .gpu-next .section-label { color: #f2b09a; margin-bottom: 8px; }
     .gpu-next ul { margin: 0; padding-left: 18px; }
     .gpu-method { margin: 14px 0 0; color: var(--muted); font-size: 11px; }
+    .gpu-project { margin-top: 72px; padding-top: 60px; border-top: 1px solid var(--line); }
     .program-list { border-top: 1px solid var(--line); }
     .program { display: grid; grid-template-columns: 90px .75fr 1.25fr; gap: 28px; padding: 30px 0; border-bottom: 1px solid var(--line); }
     .program-index { color: var(--rust); font: italic 23px var(--serif); }
@@ -331,6 +332,51 @@
             <div class="gpu-next"><div class="section-label">Also in the repository</div><ul><li>Domain decomposition with MPI halo exchange, validated on 1-6 ranks</li><li>CPU test suite and GitHub Actions CI that run without a GPU</li><li>Raw benchmark data and the job scripts that produced it</li><li>In progress: multi-GPU scaling and GPU-aware MPI</li></ul></div>
           </aside>
         </div>
+        <div class="gpu-project" id="gpu-c90">
+        <div class="section-head"><div class="section-label">GPU &amp; HPC engineering · C90 CFD-DEM</div><div><h2>Scaling a coupled fluid-particle solver to 180 million particles on one H100.</h2><p>At Purdue I extended MFiX-Exa (AMReX, CUDA) with a 90-degree rotationally periodic sector for a syringe-injection CFD-DEM problem, then made it fast on NVIDIA H100s. Every optimization was chosen from a profile, tested as a matched A/B against the previous build, and accepted only if pressure, particle state, and particle count stayed within an explicit accuracy budget.</p></div></div>
+        <div class="gpu-metrics">
+          <div class="gpu-metric"><strong>180M</strong><span>Particles on a single 80 GB H100 at 6.0 s per step</span></div>
+          <div class="gpu-metric"><strong>203×</strong><span>Fewer neighbor candidates; fixed a 32-bit CSR overflow crash</span></div>
+          <div class="gpu-metric"><strong>5.1×</strong><span>Faster step from a profile-guided neighbor-list fix (20M particles)</span></div>
+          <div class="gpu-metric"><strong>2.04×</strong><span>Faster pressure solve with a best-iterate Krylov bottom solver</span></div>
+        </div>
+        <div class="gpu-grid">
+          <div>
+            <div class="gpu-block">
+              <h3>Particle capacity on one GPU</h3>
+              <p>Wall time per CFD step on one NVIDIA H100, polydisperse particles in a rotational sector.</p>
+              <div class="gpu-table-wrap"><table class="gpu-table">
+                <thead><tr><th>Particles</th><th>Neighbor search</th><th>s / step</th><th>Outcome</th></tr></thead>
+                <tbody>
+                  <tr><td>20M</td><td>Rebuilt every substep</td><td>17.8</td><td>92.5% of DEM in list rebuild</td></tr>
+                  <tr><td>20M</td><td>Rebuilt once per step</td><td>3.49</td><td class="win">5.1×</td></tr>
+                  <tr><td>80M</td><td>Uniform radius</td><td>—</td><td>31.2B entries, CSR overflow</td></tr>
+                  <tr><td>80M</td><td>Size-aware bins</td><td>3.39</td><td class="win">runs, 203× fewer entries</td></tr>
+                  <tr><td>180M</td><td>Size-aware bins</td><td>6.01</td><td class="win">63.6 of 81 GB used</td></tr>
+                </tbody>
+              </table></div>
+              <p class="gpu-method">Each setting was checked against a matched control: changing the rebuild interval moved pressure by at most 0.055%. The 180M run is a timing and capacity test, not a production physics run.</p>
+            </div>
+            <div class="gpu-block">
+              <h3>Profile, change, measure</h3>
+              <p>Stage timers, nested GPU timers, and Nsight Compute picked every target. Each gain below is from an on/off A/B on the same H100.</p>
+              <ul class="opt-list">
+                <li><div><b>Diagnose a crash at its root</b>A 64-bit pre-scan audit showed the 80M neighbor list needed 7.3× the 32-bit CSR limit (~125 GB). Size-aware binning fixed the algorithm instead of widening the offsets.</div><span class="gain">203× fewer entries</span></li>
+                <li><div><b>Sort particles spatially</b>Nsight Compute showed the pair kernel was latency-bound on irregular gathers, with too little occupancy to hide them. Periodic spatial sorting restored locality.</div><span class="gain">52.8% faster DEM substep</span></li>
+                <li><div><b>Cache a recursive multigrid operator</b>Assembled the coarse Galerkin operator once as a width-48 ELLPACK sparse matrix on the GPU, matching the recursive operator to 6×10⁻¹⁵.</div><span class="gain">30.1% faster step</span></li>
+                <li><div><b>Remove device-host synchronization</b>Guarded no-sync execution through the one-rank multigrid hierarchy.</div><span class="gain">33.2% faster step</span></li>
+                <li><div><b>Exploit symmetry</b>A quarter-cylinder sector on the rotational quotient space, validated against the full cylinder.</div><span class="gain">1.28× at 0.11% error</span></li>
+              </ul>
+            </div>
+            <div class="case-footer"><div class="tag-row"><span class="tag">CUDA</span><span class="tag">AMReX / MFiX-Exa</span><span class="tag">MPI</span><span class="tag">NVIDIA H100</span><span class="tag">Nsight Compute</span><span class="tag">Multigrid</span><span class="tag">CFD-DEM</span></div><a class="text-link" href="https://github.com/hrshl212/C90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
+          </div>
+          <aside class="gpu-aside">
+            <figure class="gpu-figure"><img src="assets/research/c90-single-h100-particle-capacity.png" alt="Bar chart of wall time per CFD step on one H100 for 20, 80 and 180 million particles under different neighbor-search settings" loading="lazy"><figcaption><b>From a crash at 80M to 180M particles on one GPU.</b> A profile-guided neighbor-list fix and size-aware binning.</figcaption></figure>
+            <figure class="gpu-figure"><img src="assets/research/c90-multi-gpu-strong-scaling.png" alt="Stacked bar chart of strong scaling on 1, 2, 4 and 8 H100 GPUs, with the DEM-only speedup compared to ideal" loading="lazy"><figcaption><b>Multi-GPU strong scaling, measured honestly.</b> On 1–8 H100s the DEM stage scales, but a five-box fluid mesh and rotational-coupling communication make every multi-GPU run slower. So production stayed on one GPU, and a decomposition redesign is the next step.</figcaption></figure>
+            <div class="gpu-next"><div class="section-label">Also in the repository</div><ul><li>Two-GPU MPI seam-contact symmetry to 2.8×10⁻¹⁵</li><li>Nsight Compute kernel analysis: occupancy, stalls, L2 traffic</li><li>Benchmark tables, a plotting script, and CI</li><li>Documented negative results and accuracy trade-offs</li></ul></div>
+          </aside>
+        </div>
+        </div>
       </div>
     </section>
     <section id="research">
@@ -375,7 +421,7 @@
               <h3>A validated 90° cyclic sector for coupled CFD-DEM</h3>
               <p>The sector framework maps scalars across radial faces, rotates vectors by 90°, wraps particles and their contact images, conserves fluxes and particle-to-fluid sources, and makes the pressure projection act on the rotational quotient space.</p>
               <div class="case-metrics"><div class="case-metric"><strong>1.62×10⁻¹⁰</strong><span>Quotient-operator action error</span></div><div class="case-metric"><strong>2.78×10⁻¹⁵</strong><span>Cross-rank contact symmetry error</span></div><div class="case-metric"><strong>52.78%</strong><span>DEM-substep reduction from sorting</span></div></div>
-              <div class="case-footer"><div class="tag-row"><span class="tag">CFD-DEM</span><span class="tag">Rotational BC</span><span class="tag">AMReX</span><span class="tag">GPU</span></div><a class="text-link" href="https://github.com/hrshl212/c90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
+              <div class="case-footer"><div class="tag-row"><span class="tag">CFD-DEM</span><span class="tag">Rotational BC</span><span class="tag">AMReX</span><span class="tag">GPU</span></div><a class="text-link" href="https://github.com/hrshl212/C90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
               <p class="case-note"><b>Qualification:</b> coupled production results use one MPI rank. Focused two-rank particle tests and a one-step coupled comparison pass; sustained coupled multi-rank pressure evolution is not claimed.</p>
             </div>
           </article>

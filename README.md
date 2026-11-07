@@ -28,4 +28,4 @@ This repository is configured for the GitHub Pages user site at <https://hrshl21
 
 ## Content sources
 
-Academic claims, dates, publications, awards, and teaching details are synchronized with `assets/Harshal_Raut_CV.pdf`. Postdoctoral validation and performance claims are synchronized with <https://github.com/hrshl212/multiphase-fsi-showcase> and <https://github.com/hrshl212/c90-sector-cfd-dem>. Update the website when those sources change.
+Academic claims, dates, publications, awards, and teaching details are synchronized with `assets/Harshal_Raut_CV.pdf`. Postdoctoral validation and performance claims are synchronized with <https://github.com/hrshl212/multiphase-fsi-showcase> and <https://github.com/hrshl212/C90-sector-cfd-dem>. Update the website when those sources change.

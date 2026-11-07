@@ -23,6 +23,7 @@ Last updated: 2026-11-04
 1. Academic hero and primary links.
 2. Research record strip.
 3. GPU & HPC engineering (`#gpu-work`, nav link "GPU work"): FlowFPM++ CPU-to-GPU port, speedup table, profiling-driven optimization list, repository link. Planned: add multi-GPU scaling and GPU-aware MPI results once measured.
+   Second block `#gpu-c90` (added 2026-11-06): C90 CFD-DEM on H100 — 180M-particle single-GPU capacity, 32-bit CSR overflow fix, pressure-solver A/B speedups, honest 1-8 GPU strong scaling. Numbers must match `docs/gpu-scaling-and-capacity.md` in the C90 repository; figures are local copies in `assets/research/c90-*.png`. No GPU-aware MPI timing is claimed.
 4. Research philosophy.
 5. Ph.D. spotlight with the two GIFs and one MP4.
 6. Paired postdoctoral case studies: JHU multiphase FSI and Purdue C90 CFD-DEM.
@@ -35,7 +36,7 @@ Last updated: 2026-11-04
 
 - Academic facts and publication metadata: `assets/Harshal_Raut_CV.pdf`.
 - JHU multiphase FSI methods and validation: `https://github.com/hrshl212/multiphase-fsi-showcase`.
-- Purdue rotational-sector formulation, validation, performance, and limitations: `https://github.com/hrshl212/c90-sector-cfd-dem`.
+- Purdue rotational-sector formulation, validation, performance, and limitations: `https://github.com/hrshl212/C90-sector-cfd-dem`.
 - FlowFPM++ GPU numbers (speedups, hardware, optimization log): `https://github.com/hrshl212/FlowFPMpp` README Performance section. Keep website numbers identical to it.
 - Complete publication record: Google Scholar.
 - Deployment repository: `https://github.com/hrshl212/hrshl212.github.io`.
