@@ -368,12 +368,27 @@
                 <li><div><b>Exploit symmetry</b>A quarter-cylinder sector on the rotational quotient space, validated against the full cylinder.</div><span class="gain">1.28× at 0.11% error</span></li>
               </ul>
             </div>
-            <div class="case-footer"><div class="tag-row"><span class="tag">CUDA</span><span class="tag">AMReX / MFiX-Exa</span><span class="tag">MPI</span><span class="tag">NVIDIA H100</span><span class="tag">Nsight Compute</span><span class="tag">Multigrid</span><span class="tag">CFD-DEM</span></div><a class="text-link" href="https://github.com/hrshl212/C90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
+            <div class="gpu-block">
+              <h3>CUDA-aware MPI across GPUs and nodes</h3>
+              <p>A standalone CUDA + MPI benchmark on H100 nodes (8 NVLink GPUs each, InfiniBand between nodes) compares passing GPU pointers straight to MPI with copying through host memory. Every received buffer is verified on the GPU.</p>
+              <div class="gpu-table-wrap"><table class="gpu-table">
+                <thead><tr><th>Test</th><th>CUDA-aware</th><th>Host-staged</th><th>Gain</th></tr></thead>
+                <tbody>
+                  <tr><td>GPU↔GPU, NVLink, 128 MiB</td><td>384 GB/s</td><td>7.5 GB/s</td><td class="win">51×</td></tr>
+                  <tr><td>GPU↔GPU, InfiniBand, 128 MiB</td><td>33.8 GB/s</td><td>18.1 GB/s</td><td class="win">1.9× (16× vs. old TCP path)</td></tr>
+                  <tr><td>Halo exchange, 8 GPUs, 1 node</td><td>0.12 ms</td><td>1.36 ms</td><td class="win">11.2×</td></tr>
+                  <tr><td>Halo exchange, 8 GPUs, 2 nodes</td><td>0.31 ms</td><td>1.03 ms</td><td class="win">3.3×</td></tr>
+                </tbody>
+              </table></div>
+              <p class="gpu-method">The halo test packs and unpacks six 384³-block faces with GPU kernels: the ghost-cell pattern of a distributed fluid solver. The fabric had no GPUDirect RDMA, so inter-node GPU buffers are pipelined through host memory by UCX. A broken UD transport was diagnosed and worked around by pinning UCX transports. This is a communication benchmark, not a coupled-solver timing.</p>
+            </div>
+            <div class="case-footer"><div class="tag-row"><span class="tag">CUDA</span><span class="tag">AMReX / MFiX-Exa</span><span class="tag">CUDA-aware MPI</span><span class="tag">UCX</span><span class="tag">NVLink</span><span class="tag">NVIDIA H100</span><span class="tag">Nsight Compute</span><span class="tag">Multigrid</span><span class="tag">CFD-DEM</span></div><a class="text-link" href="https://github.com/hrshl212/C90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
           </div>
           <aside class="gpu-aside">
             <figure class="gpu-figure"><img src="assets/research/c90-single-h100-particle-capacity.png" alt="Bar chart of wall time per CFD step on one H100 for 20, 80 and 180 million particles under different neighbor-search settings" loading="lazy"><figcaption><b>From a crash at 80M to 180M particles on one GPU.</b> A profile-guided neighbor-list fix and size-aware binning.</figcaption></figure>
             <figure class="gpu-figure"><img src="assets/research/c90-multi-gpu-strong-scaling.png" alt="Stacked bar chart of strong scaling on 1, 2, 4 and 8 H100 GPUs, with the DEM-only speedup compared to ideal" loading="lazy"><figcaption><b>Multi-GPU strong scaling, measured honestly.</b> On 1–8 H100s the DEM stage scales, but a five-box fluid mesh and rotational-coupling communication make every multi-GPU run slower. So production stayed on one GPU, and a decomposition redesign is the next step.</figcaption></figure>
-            <div class="gpu-next"><div class="section-label">Also in the repository</div><ul><li>Two-GPU MPI seam-contact symmetry to 2.8×10⁻¹⁵</li><li>Nsight Compute kernel analysis: occupancy, stalls, L2 traffic</li><li>Benchmark tables, a plotting script, and CI</li><li>Documented negative results and accuracy trade-offs</li></ul></div>
+            <figure class="gpu-figure"><img src="assets/research/c90-cuda-aware-mpi.png" alt="Left: MPI ping-pong bandwidth versus message size for NVLink and InfiniBand, CUDA-aware versus host-staged. Right: halo exchange time for 1 to 8 GPUs, CUDA-aware versus host-staged" loading="lazy"><figcaption><b>CUDA-aware MPI: 384 GB/s GPU-to-GPU over NVLink.</b> Passing device pointers to MPI is 51× faster than staging through the host, and makes an 8-GPU halo exchange 11× faster.</figcaption></figure>
+            <div class="gpu-next"><div class="section-label">Also in the repository</div><ul><li>Two-GPU MPI seam-contact symmetry to 2.8×10⁻¹⁵</li><li>Nsight Compute kernel analysis: occupancy, stalls, L2 traffic</li><li>CUDA + MPI microbenchmark source with verified results</li><li>Benchmark tables, a plotting script, and CI</li><li>Documented negative results and accuracy trade-offs</li></ul></div>
           </aside>
         </div>
         </div>
