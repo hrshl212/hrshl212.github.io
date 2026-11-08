@@ -382,12 +382,28 @@
               </table></div>
               <p class="gpu-method">The halo test packs and unpacks six 384³-block faces with GPU kernels: the ghost-cell pattern of a distributed fluid solver. The fabric had no GPUDirect RDMA, so inter-node GPU buffers are pipelined through host memory by UCX. A broken UD transport was diagnosed and worked around by pinning UCX transports. This is a communication benchmark, not a coupled-solver timing.</p>
             </div>
+            <div class="gpu-block">
+              <h3>20 million particles on 1–4 GPUs with CUDA-aware MPI</h3>
+              <p>MFiX-Exa rebuilt against the same CUDA-aware Open MPI + UCX stack, with 20M particles on 1, 2 and 4 H100s in one node. Each multi-GPU case was run with MPI buffers staged through the host and with GPU pointers passed straight to MPI.</p>
+              <div class="gpu-table-wrap"><table class="gpu-table">
+                <thead><tr><th>GPUs</th><th>MPI buffers</th><th>s / step</th><th>DEM exchange</th><th>vs. 1 GPU</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>—</td><td>3.19</td><td>14.3 ms</td><td>1.00×</td></tr>
+                  <tr><td>2</td><td>staged</td><td>2.25</td><td>14.4 ms</td><td>1.42×</td></tr>
+                  <tr><td>2</td><td>CUDA-aware</td><td>2.15</td><td>5.8 ms</td><td class="win">1.48×</td></tr>
+                  <tr><td>4</td><td>staged</td><td>1.73</td><td>12.9 ms</td><td>1.84×</td></tr>
+                  <tr><td>4</td><td>CUDA-aware</td><td>1.66</td><td>4.3 ms</td><td class="win">1.92×</td></tr>
+                </tbody>
+              </table></div>
+              <p class="gpu-method">CUDA-aware MPI makes the DEM ghost-particle exchange 2.5× (2 GPUs) to 3.0× (4 GPUs) faster. The first CUDA-aware run aborted in the pressure solve. I traced this to UCX's memory-type cache misclassifying AMReX's pooled GPU memory, and fixed it with <code>UCX_MEMTYPE_CACHE=n</code>. Results then matched the staged runs to about seven significant figures. These are five-step performance runs with the rotational boundary off, not production physics. The 4-box fluid mesh and uneven particle ownership limit further scaling.</p>
+            </div>
             <div class="case-footer"><div class="tag-row"><span class="tag">CUDA</span><span class="tag">AMReX / MFiX-Exa</span><span class="tag">CUDA-aware MPI</span><span class="tag">UCX</span><span class="tag">NVLink</span><span class="tag">NVIDIA H100</span><span class="tag">Nsight Compute</span><span class="tag">Multigrid</span><span class="tag">CFD-DEM</span></div><a class="text-link" href="https://github.com/hrshl212/C90-sector-cfd-dem" target="_blank" rel="noopener">Explore repository ↗</a></div>
           </div>
           <aside class="gpu-aside">
             <figure class="gpu-figure"><img src="assets/research/c90-single-h100-particle-capacity.png" alt="Bar chart of wall time per CFD step on one H100 for 20, 80 and 180 million particles under different neighbor-search settings" loading="lazy"><figcaption><b>From a crash at 80M to 180M particles on one GPU.</b> A profile-guided neighbor-list fix and size-aware binning.</figcaption></figure>
             <figure class="gpu-figure"><img src="assets/research/c90-multi-gpu-strong-scaling.png" alt="Stacked bar chart of strong scaling on 1, 2, 4 and 8 H100 GPUs, with the DEM-only speedup compared to ideal" loading="lazy"><figcaption><b>Multi-GPU strong scaling, measured honestly.</b> On 1–8 H100s the DEM stage scales, but a five-box fluid mesh and rotational-coupling communication make every multi-GPU run slower. So production stayed on one GPU, and a decomposition redesign is the next step.</figcaption></figure>
             <figure class="gpu-figure"><img src="assets/research/c90-cuda-aware-mpi.png" alt="Left: MPI ping-pong bandwidth versus message size for NVLink and InfiniBand, CUDA-aware versus host-staged. Right: halo exchange time for 1 to 8 GPUs, CUDA-aware versus host-staged" loading="lazy"><figcaption><b>CUDA-aware MPI: 384 GB/s GPU-to-GPU over NVLink.</b> Passing device pointers to MPI is 51× faster than staging through the host, and makes an 8-GPU halo exchange 11× faster.</figcaption></figure>
+            <figure class="gpu-figure"><img src="assets/research/c90-mfix-20m-multi-gpu-cuda-aware.png" alt="Left: stacked time per step for a 20 million particle MFiX-Exa run on 1, 2 and 4 H100 GPUs, staged versus CUDA-aware MPI. Right: DEM ghost-particle exchange time, staged versus CUDA-aware" loading="lazy"><figcaption><b>20M particles: 1.92× on 4 H100s.</b> CUDA-aware MPI inside MFiX-Exa makes the DEM ghost-particle exchange 3.0× faster than host staging.</figcaption></figure>
             <div class="gpu-next"><div class="section-label">Also in the repository</div><ul><li>Two-GPU MPI seam-contact symmetry to 2.8×10⁻¹⁵</li><li>Nsight Compute kernel analysis: occupancy, stalls, L2 traffic</li><li>CUDA + MPI microbenchmark source with verified results</li><li>Benchmark tables, a plotting script, and CI</li><li>Documented negative results and accuracy trade-offs</li></ul></div>
           </aside>
         </div>
